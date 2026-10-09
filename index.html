@@ -1,0 +1,341 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Freelance Launchpad PK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+/* Layout: ek lamba khata (ledger) page: hero, phir chaar kaam ke hisse jo ek ke baad ek aate hain. */
+:root{
+  --bg:#F1F5F2; --surface:#FFFFFF; --fg:#14201B; --muted:#51625A; --line:#D3DDD7;
+  --accent:#0B6B47; --accent-fg:#FFFFFF; --mark:#F2B230; --mark-fg:#2A2000; --soft:#E4EEE8;
+  --f-display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
+  --f-body:'Source Sans 3','Segoe UI',system-ui,sans-serif;
+  --f-mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0D1512; --surface:#14201B; --fg:#E8EFEB; --muted:#9DADA4; --line:#27372F;
+    --accent:#4CC38A; --accent-fg:#0D1512; --mark:#F0B940; --mark-fg:#2A2000; --soft:#1B2B24; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0D1512; --surface:#14201B; --fg:#E8EFEB; --muted:#9DADA4; --line:#27372F;
+  --accent:#4CC38A; --accent-fg:#0D1512; --mark:#F0B940; --mark-fg:#2A2000; --soft:#1B2B24; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:17px;line-height:1.55;padding-inline:16px;padding-block:0 56px}
+.wrap{max-width:920px;margin-inline:auto}
+h1,h2,h3{font-family:var(--f-display);line-height:1.08;margin:0;text-wrap:balance}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--mark);outline-offset:2px;border-radius:4px}
+.mono{font-family:var(--f-mono);font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+
+.top{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding-block:18px;border-bottom:1px solid var(--line)}
+.brand{font-family:var(--f-display);font-weight:800;font-size:19px}
+.top nav{display:flex;gap:6px 18px;flex-wrap:wrap}
+.top nav a{color:var(--fg);text-decoration:none;font-weight:600;font-size:15px}
+.top nav a:hover{color:var(--accent)}
+
+.hero{padding-block:48px 36px;display:grid;gap:28px}
+.hero h1{font-size:clamp(40px,8vw,76px);font-weight:800;letter-spacing:-.025em;max-width:13ch}
+.hero h1 mark{background:var(--mark);color:var(--mark-fg);padding:0 .12em;border-radius:3px}
+.hero p.lead{max-width:56ch;font-size:19px;color:var(--muted);margin:0}
+.ledger{display:grid;gap:0;max-width:640px;border-top:2px solid var(--fg)}
+.ledger div{display:flex;justify-content:space-between;gap:16px;padding-block:10px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.ledger b{font-family:var(--f-mono);font-weight:500;font-size:15px}
+.ledger span{min-width:0}
+
+section{padding-block:44px 8px;scroll-margin-top:8px}
+section>header{display:grid;gap:8px;margin-bottom:22px}
+section h2{font-size:clamp(28px,5vw,40px);font-weight:800;letter-spacing:-.015em}
+section>header p{margin:0;color:var(--muted);max-width:60ch}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px}
+.btn{font:inherit;font-weight:600;border:0;border-radius:8px;padding:11px 18px;cursor:pointer;background:var(--accent);color:var(--accent-fg)}
+.btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
+.btn:hover{filter:brightness(1.08)}
+
+/* quiz */
+.qhead{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.bar{height:6px;background:var(--soft);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .25s}
+.q h3{font-size:24px;margin:20px 0 14px}
+.opts{display:grid;gap:10px}
+.opt{font:inherit;text-align:left;background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:13px 16px;cursor:pointer;min-width:0}
+.opt:hover{border-color:var(--accent);background:var(--soft)}
+.result h3{font-size:34px;margin:10px 0 8px}
+.result p{margin:0 0 10px;max-width:60ch}
+.meta{display:flex;gap:8px 20px;flex-wrap:wrap;margin:14px 0 18px}
+.pill{font-family:var(--f-mono);font-size:13px;border:1px solid var(--line);border-radius:99px;padding:3px 12px;background:var(--bg)}
+.second{border-top:1px solid var(--line);margin-top:18px;padding-top:14px;color:var(--muted)}
+
+/* calc */
+.calc{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:24px}
+.fields{display:grid;gap:14px}
+.field{display:grid;gap:4px;min-width:0}
+.field label{font-weight:600;font-size:15px}
+.field input{font:inherit;font-family:var(--f-mono);background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:10px 12px;width:100%;min-width:0}
+.field small{color:var(--muted);font-size:13px}
+.out{display:grid;gap:0;align-content:start}
+.out .row{display:flex;justify-content:space-between;gap:12px;padding-block:11px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.out .row b{font-family:var(--f-mono);font-weight:500;font-variant-numeric:tabular-nums}
+.out .total{border-bottom:0;border-top:2px solid var(--fg);margin-top:6px;padding-top:14px}
+.out .total b{font-family:var(--f-display);font-weight:800;font-size:clamp(28px,6vw,40px);background:var(--mark);color:var(--mark-fg);padding:0 .25em;border-radius:3px}
+.note{color:var(--muted);font-size:14px;margin:14px 0 0}
+
+/* roadmap */
+.prog{display:grid;gap:8px;margin-bottom:20px}
+.weeks{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:16px}
+.week h3{font-size:22px;margin:4px 0 10px}
+.week ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.week li label{display:flex;gap:12px;align-items:flex-start;padding:9px 6px;border-radius:6px;cursor:pointer}
+.week li label:hover{background:var(--soft)}
+.week input{margin-top:5px;width:18px;height:18px;accent-color:var(--accent);flex:none}
+.week input:checked+span{color:var(--muted);text-decoration:line-through}
+.week li span{min-width:0}
+
+/* resources */
+.res{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:16px}
+.res h3{font-size:21px;margin-bottom:6px}
+.res p{margin:0 0 8px;color:var(--muted)}
+.res .tag{display:inline-block;margin-bottom:8px}
+.src{margin-top:48px;border-top:2px solid var(--fg);padding-top:16px}
+.src ol{margin:10px 0 0;padding-left:20px;display:grid;gap:4px;font-size:15px}
+.src li{min-width:0;overflow-wrap:anywhere}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+
+<div class="wrap">
+  <div class="top">
+    <span class="brand">Freelance Launchpad PK</span>
+    <nav aria-label="Sections">
+      <a href="#quiz">Skill quiz</a><a href="#kamayi">Kamayi</a><a href="#roadmap">30 din</a><a href="#resources">Free resources</a>
+    </nav>
+  </div>
+
+  <div class="hero">
+    <span class="mono">Pakistani students ke liye</span>
+    <h1>Pehla client, <mark>30 din</mark> mein.</h1>
+    <p class="lead">Apni skill chuno, mahine ki kamayi ka andaza lagao aur roz ek kaam tick karte jao. Sab kuch free hai aur isi page par.</p>
+    <div class="ledger" role="list">
+      <div role="listitem"><span>Active freelancers (ADB andaza)</span><b>23.7 lakh</b></div>
+      <div role="listitem"><span>Pakistan ka global platforms par maqam</span><b>top 3-4</b></div>
+      <div role="listitem"><span>2024 mein freelancers ki zar-e-mubadla kamayi</span><b>$397 million+</b></div>
+    </div>
+  </div>
+
+  <section id="quiz">
+    <header>
+      <span class="mono">Hissa 1</span>
+      <h2>Kaunsi skill tumhare liye?</h2>
+      <p>Paanch sawal. Jawab tumhari pasand, waqt aur computer ke hisab se skill chunta hai.</p>
+    </header>
+    <div class="card" id="quizBox" aria-live="polite"></div>
+  </section>
+
+  <section id="kamayi">
+    <header>
+      <span class="mono">Hissa 2</span>
+      <h2>Mahine mein kitna bann sakta hai?</h2>
+      <p>Neeche ke aankre sirf misal hain. Apni marzi ke number daalo, hisaab khud badal jayega.</p>
+    </header>
+    <div class="card calc">
+      <div class="fields">
+        <div class="field"><label for="rate">Ek ghante ki rate (USD)</label><input id="rate" type="number" min="0" step="0.5" value="5" inputmode="decimal"><small>Misal ke taur par 5. Asli rate portfolio aur platform par tay hoti hai.</small></div>
+        <div class="field"><label for="hours">Hafte mein ghante</label><input id="hours" type="number" min="0" max="80" step="1" value="15" inputmode="decimal"></div>
+        <div class="field"><label for="weeks">Mahine mein kaam ke hafte</label><input id="weeks" type="number" min="0" max="5" step="1" value="4" inputmode="decimal"></div>
+        <div class="field"><label for="fee">Platform fee (%)</label><input id="fee" type="number" min="0" max="100" step="1" value="20" inputmode="decimal"><small>Platform ke mutabiq badlo. Direct client par 0.</small></div>
+        <div class="field"><label for="fx">1 USD = kitne PKR</label><input id="fx" type="number" min="0" step="0.5" value="278" inputmode="decimal"><small>July 2026 ke ek source mein taqreeban 278 tha. Aaj ka rate khud dekh lo.</small></div>
+      </div>
+      <div class="out" aria-live="polite">
+        <div class="row"><span>Fee se pehle</span><b id="oGross"></b></div>
+        <div class="row"><span>Platform fee</span><b id="oFee"></b></div>
+        <div class="row"><span>Fee ke baad (USD)</span><b id="oNet"></b></div>
+        <div class="row"><span>Saal ka andaza (USD)</span><b id="oYear"></b></div>
+        <div class="row total"><span>Mahine ke PKR</span><b id="oPkr"></b></div>
+        <p class="note">PayPal Pakistan mein nahi chalta. Marketplace ke liye aam tor par Payoneer, direct clients ke liye Wise istemal hota hai.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="roadmap">
+    <header>
+      <span class="mono">Hissa 3</span>
+      <h2>30 din ka plan</h2>
+      <p>Har kaam par tick lagao. Progress is browser mein save rehti hai.</p>
+    </header>
+    <div class="prog">
+      <div class="qhead"><span class="mono" id="progLabel"></span><button class="btn ghost" id="resetBtn" type="button">Tick saaf karo</button></div>
+      <div class="bar" role="progressbar" aria-label="Plan ki progress" aria-valuemin="0" aria-valuemax="100" id="progBar"><i id="progFill"></i></div>
+    </div>
+    <div class="weeks" id="weeks"></div>
+  </section>
+
+  <section id="resources">
+    <header>
+      <span class="mono">Hissa 4</span>
+      <h2>Seekhne ke free raste</h2>
+      <p>Tareekhein un sources ki hain jo is page ke neeche diye gaye hain. Dobara check kar lo ke naya batch khula hai ya nahi.</p>
+    </header>
+    <div class="res">
+      <div class="card"><span class="mono tag">Sarkari, free</span><h3>DigiSkills</h3><p>Virtual University ke e-certificate ke sath free online courses, website aur mobile app dono par. Batch-03 ki enrollment 23 Feb 2026 ko khuli thi aur classes April 2026 ke pehle hafte mein shuru huin.</p><a href="https://digiskills.pk" target="_blank" rel="noopener">digiskills.pk</a></div>
+      <div class="card"><span class="mono tag">Free, certificate ke sath</span><h3>Cisco x MOFEPT</h3><p>Cybersecurity, AI aur networking ke chhote self-paced courses. Pichli apply karne ki aakhri tareekh 8 March 2026 thi, isliye naya round pooch lo.</p><a href="https://propakistani.pk/2026/02/27/govt-launches-free-online-technology-courses-for-students/" target="_blank" rel="noopener">Khabar</a></div>
+      <div class="card"><span class="mono tag">Financial aid mumkin</span><h3>Coursera aur Google Career Certificates</h3><p>IT Support, UX Design, Project Management aur Data Analytics ke certificates. Launch ke waqt fee $14 mahana thi aur scholarships ke zariye bilkul free hasil karne ka bhi zikr tha. HEC ka free Coursera access 30 June 2025 tak tha, naya access HEC se maloom karo.</p><a href="https://propakistani.pk/?p=590805" target="_blank" rel="noopener">Khabar</a></div>
+      <div class="card"><span class="mono tag">Free</span><h3>Khan Academy</h3><p>Maths, English aur buniyadi concepts ki free videos, jo kisi bhi skill ki buniyad pakki karti hain.</p><a href="https://digitalpakistan.pk/?p=1355" target="_blank" rel="noopener">Maloomat</a></div>
+    </div>
+
+    <div class="src">
+      <span class="mono">Sources</span>
+      <ol>
+        <li><a href="https://www.jobbers.io/best-freelancing-skills-in-pakistan-top-15-high-paying-skills/" target="_blank" rel="noopener">Jobbers.io, Best Freelancing Skills in Pakistan (July 2026)</a></li>
+        <li><a href="https://abroadmate.me/guides/how-to-start-freelancing-pakistan-2026" target="_blank" rel="noopener">AbroadMate, How to Start Freelancing from Pakistan in 2026</a></li>
+        <li><a href="https://parhlai.com/blog/best-freelancing-skills-2026" target="_blank" rel="noopener">Parhlai, Best Freelancing Skills for Pakistani Students in 2026</a></li>
+        <li><a href="https://digitalpakistan.pk/pakistan-freelance-economy/" target="_blank" rel="noopener">Digital Pakistan, Pakistan freelance economy</a></li>
+        <li><a href="https://digiskills.pk/faqs.aspx" target="_blank" rel="noopener">DigiSkills FAQs</a></li>
+        <li><a href="https://propakistani.pk/2026/02/27/govt-launches-free-online-technology-courses-for-students/" target="_blank" rel="noopener">ProPakistani, free online technology courses</a></li>
+        <li><a href="https://propakistani.pk/?p=590805" target="_blank" rel="noopener">ProPakistani, Google Career Certifications in Pakistan</a></li>
+      </ol>
+      <p class="note">Skills ki mushkil aur hafton ka andaza Claude ka hai, kisi source ka nahi.</p>
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+  /* ---------- data ---------- */
+  var SKILLS = {
+    web:    {name:"Web development", diff:4, weeks:8, why:"Kai guides ke mutabiq sab se zyada kamane wali skill hai. WordPress se shuru karna aasan rasta hai kyunke chhote karobaar musalsal website banwate hain.", start:"DigiSkills ka web course ya WordPress ka local setup."},
+    uiux:   {name:"UI/UX design (Figma)", diff:3, weeks:6, why:"Companies is skill par acchi payment deti hain, aur Figma free mein seekhi ja sakti hai.", start:"Google UX Design certificate (financial aid ke sath) aur Figma ke free tutorials."},
+    video:  {name:"Video editing", diff:3, weeks:5, why:"Content economy ki wajah se Reels aur YouTube editing ki demand musalsal hai. AI ne basic editing tez ki hai, lekin acchi quality ke editors ki demand barh gayi.", start:"Ek free editor par apni hi clip ka 30 second ka reel banao."},
+    market: {name:"Digital marketing aur Ads", diff:3, weeks:6, why:"Chhote karobaar Google aur Facebook Ads sambhalne ke liye log dhoondte hain, aur is ki demand barh rahi hai.", start:"DigiSkills ka digital marketing course aur Google Skillshop."},
+    ai:     {name:"AI-assisted services", diff:2, weeks:4, why:"Ubharti hui niche hai aur platforms par abhi muqabla kam hai. Naye logon ke liye acchi shuruat.", start:"Cisco x MOFEPT ka AI course aur khud ke chhote AI projects."},
+    write:  {name:"Content aur copywriting", diff:2, weeks:4, why:"Rukawat sab se kam hai. Lekin AI ki wajah se basic articles ki demand ghati hai, isliye copywriting par zor do jo behtar paisa deti hai.", start:"Roz ek paragraph likho aur 3 sample pieces jama karo."},
+    graphic:{name:"Graphic design", diff:2, weeks:5, why:"Pakistan mein sab se mashhoor skills mein se hai aur sahi tareeqe se karo to munafa bhi acha hai. Muqabla zyada hai, isliye portfolio zaroori.", start:"Canva se shuru karo, phir DigiSkills ka graphic design course."}
+  };
+  var QUIZ = [
+    {q:"Tumhe sab se zyada kya karna pasand hai?", o:[
+      ["Logic aur code, cheezein chalte hue dekhna",{web:3,ai:1}],
+      ["Rang, layout aur design",{uiux:2,graphic:3}],
+      ["Video kaatna aur reels banana",{video:4}],
+      ["Likhna, logon ko qaael karna",{write:3,market:2}]]},
+    {q:"Roz seekhne ke liye kitna waqt nikal sakte ho?", o:[
+      ["Aadha se ek ghanta",{ai:2,write:2,graphic:1}],
+      ["Do ghante",{market:1,video:1,graphic:1}],
+      ["Teen ghante ya zyada",{web:2,uiux:2,video:1}]]},
+    {q:"Tumhara computer kaisa hai?", o:[
+      ["Purana ya kam power wala",{write:2,graphic:1,market:1,ai:1}],
+      ["Theek thaak, aam kaam ke liye",{uiux:1,web:1,market:1}],
+      ["Acha, video aur design chala leta hai",{video:2,uiux:1,web:1}]]},
+    {q:"Pehla client kitni jaldi chahiye?", o:[
+      ["Ek mahine ke andar",{write:2,graphic:2,ai:2}],
+      ["Do se teen mahine",{market:1,video:1,uiux:1}],
+      ["Jaldi nahi, sab se zyada kamayi chahiye",{web:3,uiux:1}]]},
+    {q:"Clients se baat karna kaisa lagta hai?", o:[
+      ["Aasan hai, mazaa aata hai",{market:3,write:1}],
+      ["Theek hai, zaroorat ho to",{graphic:1,uiux:1,video:1}],
+      ["Akele kaam karna behtar lagta hai",{web:2,video:1,ai:1}]]}
+  ];
+  var PLAN = [
+    {t:"Hafta 1: Buniyad", items:["Skill chuno aur DigiSkills ya Coursera par account banao","Chuni hui skill ka pehla module dekho, notes banao","Zaroori free tools install karo","Module 2 aur 3, har ek ke baad chhota exercise","Pehla bohat chhota mini-project shuru karo","Hafte ka review: kya samajh aaya, kya nahi"]},
+    {t:"Hafta 2: Practice", items:["Course ka agla hissa aur 20 minute practice","Mini-project 1 mukammal karo","Kisi acchi profile ka kaam dekh kar usi tarah ka sample banao","Mini-project 2 banao","Dost ya forum se feedback maango","Hafte ka review"]},
+    {t:"Hafta 3: Portfolio", items:["Teesra project banao: dukan, society ya university event ke liye","Portfolio page banao (Behance, GitHub, Google Sites ya Notion)","Portfolio mein 3 projects lagao, har ek ki 2 line description","English mein 5 sample client messages likho","Fiverr ya Upwork profile ka draft likho","Hafte ka review"]},
+    {t:"Hafta 4: Pehla client", items:["Profile mukammal karo, photo aur portfolio link lagao","Fiverr par 2-3 gigs banao ya Upwork par 5 proposals bhejo","Competitors ki qeemat dekh kar apni shuruati qeemat tay karo","5 aur proposals bhejo, har ek client ke mutabiq likhi hui","5 local karobaar ko message ya email bhejo","30 din ka review aur agle mahine ka plan"]}
+  ];
+
+  /* ---------- helpers ---------- */
+  function $(id){return document.getElementById(id)}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+  function store(k,v){try{ if(v===undefined) return localStorage.getItem(k); localStorage.setItem(k,v);}catch(e){return null}}
+
+  /* ---------- quiz ---------- */
+  var step=0, score={};
+  function ranking(sc){
+    return Object.keys(SKILLS).sort(function(a,b){
+      var d=(sc[b]||0)-(sc[a]||0);
+      return d!==0?d:SKILLS[a].diff-SKILLS[b].diff;
+    });
+  }
+  function renderQuiz(){
+    var box=$("quizBox");
+    if(step>=QUIZ.length){
+      var r=ranking(score), s=SKILLS[r[0]], s2=SKILLS[r[1]];
+      box.innerHTML='<div class="result"><span class="mono">Tumhari skill</span><h3>'+esc(s.name)+'</h3><p>'+esc(s.why)+'</p>'+
+        '<div class="meta"><span class="pill">Mushkil '+s.diff+'/5 (andaza)</span><span class="pill">Shuruat ~'+s.weeks+' hafte (andaza)</span></div>'+
+        '<p><b>Shuru kahan se:</b> '+esc(s.start)+'</p>'+
+        '<div class="second">Doosra behtareen option: <b>'+esc(s2.name)+'</b></div>'+
+        '<p style="margin-top:16px"><button class="btn" id="again" type="button">Quiz dobara</button></p></div>';
+      $("again").onclick=function(){step=0;score={};renderQuiz()};
+      return;
+    }
+    var q=QUIZ[step], html='<div class="q"><div class="qhead"><span class="mono">Sawal '+(step+1)+' / '+QUIZ.length+'</span></div>'+
+      '<div class="bar"><i style="width:'+(step/QUIZ.length*100)+'%"></i></div><h3>'+esc(q.q)+'</h3><div class="opts">';
+    q.o.forEach(function(o,i){html+='<button class="opt" type="button" data-i="'+i+'">'+esc(o[0])+'</button>'});
+    box.innerHTML=html+'</div></div>';
+    box.querySelectorAll(".opt").forEach(function(b){
+      b.onclick=function(){
+        var pts=q.o[+b.getAttribute("data-i")][1];
+        Object.keys(pts).forEach(function(k){score[k]=(score[k]||0)+pts[k]});
+        step++; renderQuiz();
+        var first=box.querySelector("button"); if(first) first.focus({preventScroll:true});
+      };
+    });
+  }
+
+  /* ---------- calculator ---------- */
+  function calc(p){
+    var gross=p.rate*p.hours*p.weeks;
+    var fee=gross*(p.fee/100);
+    var net=gross-fee;
+    return {gross:gross,fee:fee,net:net,year:net*12,pkr:net*p.fx};
+  }
+  function num(id){var v=parseFloat($(id).value);return isFinite(v)&&v>=0?v:0}
+  function usd(n){return "$"+n.toLocaleString("en-US",{maximumFractionDigits:0})}
+  function pkr(n){return "Rs "+Math.round(n).toLocaleString("en-IN")}
+  function renderCalc(){
+    var r=calc({rate:num("rate"),hours:num("hours"),weeks:num("weeks"),fee:Math.min(100,num("fee")),fx:num("fx")});
+    $("oGross").textContent=usd(r.gross);
+    $("oFee").textContent="-"+usd(r.fee);
+    $("oNet").textContent=usd(r.net);
+    $("oYear").textContent=usd(r.year);
+    $("oPkr").textContent=pkr(r.pkr);
+  }
+  ["rate","hours","weeks","fee","fx"].forEach(function(id){$(id).addEventListener("input",renderCalc)});
+
+  /* ---------- roadmap ---------- */
+  var KEY="launchpad-pk-v1";
+  function loadChecks(){var raw=store(KEY); try{return raw?JSON.parse(raw):{}}catch(e){return {}}}
+  var checks=loadChecks(), total=0;
+  function renderPlan(){
+    var html="";
+    PLAN.forEach(function(w,wi){
+      html+='<div class="card week"><span class="mono">'+(wi*7+1)+' se '+Math.min(30,(wi+1)*7+(wi===3?2:0))+' din</span><h3>'+esc(w.t)+'</h3><ul>';
+      w.items.forEach(function(it,ii){
+        var id="t"+wi+"_"+ii; total++;
+        html+='<li><label><input type="checkbox" id="'+id+'"'+(checks[id]?" checked":"")+'><span>'+esc(it)+'</span></label></li>';
+      });
+      html+='</ul></div>';
+    });
+    $("weeks").innerHTML=html;
+    $("weeks").addEventListener("change",function(e){
+      if(e.target&&e.target.type==="checkbox"){checks[e.target.id]=e.target.checked?1:0;store(KEY,JSON.stringify(checks));progress()}
+    });
+    progress();
+  }
+  function progress(){
+    var done=0;Object.keys(checks).forEach(function(k){if(checks[k])done++});
+    var pct=total?Math.round(done/total*100):0;
+    $("progLabel").textContent=done+" / "+total+" kaam mukammal ("+pct+"%)";
+    $("progFill").style.width=pct+"%";
+    $("progBar").setAttribute("aria-valuenow",pct);
+  }
+  $("resetBtn").onclick=function(){
+    checks={};store(KEY,"{}");
+    document.querySelectorAll("#weeks input").forEach(function(i){i.checked=false});
+    progress();
+  };
+
+  renderQuiz(); renderCalc(); renderPlan();
+})();
+</script>
+
+</body></html>
